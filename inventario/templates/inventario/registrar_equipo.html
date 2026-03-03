@@ -1,0 +1,17 @@
+{% extends 'inventario/base.html' %}
+
+{% block content %}
+    <h2>Registrar Nuevo Equipo</h2>
+    <p>Ingresa los detalles técnicos del equipo para el inventario.</p>
+
+    <form method="POST" style="margin-top: 20px;">
+        {% csrf_token %}
+        
+        <div style="margin-bottom: 15px;">
+            {{ form.as_p }}
+        </div>
+
+        <button type="submit" class="btn">Guardar Equipo</button>
+        <a href="{% url 'lista_equipos' %}" style="margin-left: 10px; color: #1a1a1a;">Cancelar</a>
+    </form>
+{% endblock %}

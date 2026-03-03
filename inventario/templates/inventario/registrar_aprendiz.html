@@ -1,0 +1,17 @@
+{% extends 'inventario/base.html' %}
+
+{% block content %}
+    <h2>Registrar Nuevo Aprendiz</h2>
+    <p>Ingresa los datos del estudiante para darlo de alta en el sistema.</p>
+
+    <form method="POST" style="margin-top: 20px;">
+        {% csrf_token %}
+        
+        <div style="margin-bottom: 15px;">
+            {{ form.as_p }}
+        </div>
+
+        <button type="submit" class="btn">Guardar Aprendiz</button>
+        <a href="{% url 'lista_equipos' %}" style="margin-left: 10px; color: #666;">Cancelar</a>
+    </form>
+{% endblock %}

@@ -1,0 +1,106 @@
+/* Paleta de colores: Lila muy claro y texto resaltado */
+:root {
+    --lila-principal: #e0d4f7; /* Lila muy clarito para encabezados y detalles */
+    --lila-fondo: #f5f0ff;      /* Lila casi blanco para el fondo de la página */
+    --texto: #1a1a1a;          /* Negro suave para que resalte mucho */
+    --blanco: #ffffff;
+    --borde-lila: #d1c1ed;     /* Un tono más oscuro para bordes */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--lila-fondo);
+    color: var(--texto);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Encabezado Lila Clarito */
+header {
+    background-color: var(--lila-principal);
+    color: var(--texto); /* Letras negras para resaltar */
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-bottom: 2px solid var(--borde-lila);
+}
+
+nav {
+    margin-top: 15px;
+}
+
+nav a {
+    color: var(--texto);
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: 600; /* Un poco más de grosor para que se note */
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #6a4ea1; /* Un lila más fuerte al pasar el mouse */
+}
+
+/* Contenedor principal */
+main {
+    max-width: 950px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* Tarjeta para la tabla y formularios */
+.card {
+    background: var(--blanco);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    border: 1px solid var(--borde-lila);
+}
+
+h2 {
+    margin-top: 0;
+    color: var(--texto);
+    border-bottom: 2px solid var(--lila-principal);
+    padding-bottom: 10px;
+}
+
+/* Estilo de la Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    background-color: var(--lila-principal);
+    color: var(--texto);
+    text-align: left;
+    padding: 15px;
+    font-weight: 700;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid var(--lila-fondo);
+    color: var(--texto);
+}
+
+tr:hover {
+    background-color: #fcfaff;
+}
+
+/* Botones con estilo lila */
+.btn {
+    background-color: var(--lila-principal);
+    color: var(--texto);
+    border: 1px solid var(--borde-lila);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background-color: var(--borde-lila);
+}

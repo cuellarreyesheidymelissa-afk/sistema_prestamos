@@ -1,33 +1,61 @@
 {% extends 'inventario/base.html' %}
 
 {% block content %}
-<div class="card shadow">
-    <div class="card-header bg-primary text-white">
-        <h2 class="mb-0">Lista de Equipos</h2>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2>Inventario de Equipos</h2>
+        <div>
+            <a href="{% url 'registrar_equipo' %}" class="btn">+ Equipo</a>
+            <a href="{% url 'registrar_aprendiz' %}" class="btn" style="background-color: #d1c1ed;">+ Aprendiz</a>
+            <a href="{% url 'registrar_prestamo' %}" class="btn" style="background-color: #6a4ea1; color: white;">Nuevo Préstamo</a>
+        </div>
     </div>
-    <div class="card-body">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Serie</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for equipo in equipos %}
-                <tr>
-                    <td>{{ equipo.nombre }}</td>
-                    <td>{{ equipo.serie }}</td>
-                    <td>{{ equipo.estado }}</td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="3" class="text-center text-muted">No hay equipos registrados.</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for equipo in equipos %}
+            <tr>
+                <td>{{ equipo.nombre }}</td>
+                <td>{{ equipo.tipo }}</td>
+                <td>
+                    <span style="padding: 4px 8px; border-radius: 4px; background: {% if equipo.estado == 'Disponible' %}#d4edda{% else %}#f8d7da{% endif %};">
+                        {{ equipo.estado }}
+                    </span>
+                </td>
+                <td>
+                    <a href="{% url 'eliminar_equipo' equipo.id %}" onclick="return confirm('¿Eliminar este equipo?')" style="color: red; font-size: 0.8em;">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2 style="margin-top: 40px;">Préstamos Activos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Aprendiz</th>
+                <th>Equipo</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in prestamos %}
+            <tr>
+                <td>{{ p.aprendiz.nombre }}</td>
+                <td>{{ p.equipo.nombre }}</td>
+                <td>{{ p.fecha_prestamo|date:"d/m/Y" }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="3">No hay préstamos registrados.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

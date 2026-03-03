@@ -1,0 +1,15 @@
+{% extends 'inventario/base.html' %}
+
+{% block content %}
+    <h2>Realizar Préstamo</h2>
+    <p>Selecciona un aprendiz y el equipo que se le asignará.</p>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="card" style="border: none; box-shadow: none;">
+            {{ form.as_p }}
+            <br>
+            <button type="submit" class="btn">Confirmar Préstamo</button>
+            <a href="{% url 'lista_equipos' %}" style="margin-left: 15px; color: black;">Cancelar</a>
+        </div>
+    </form>
+{% endblock %}
